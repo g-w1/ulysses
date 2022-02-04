@@ -51,7 +51,7 @@ fn checkMinZig(current: std.SemanticVersion, exe: *std.build.LibExeObjStep) void
 pub const dirs = struct {
     pub const _root = "";
     pub const _ondyykth7j6u = cache ++ "/../..";
-    pub const _deeztnhr07fk = cache ++ "/v/git/github.com/zenith391/zgt/commit-f95b02596fa8fba496cc1d60cb011bf5b1298152";
+    pub const _deeztnhr07fk = cache ++ "/git/github.com/zenith391/zgt";
 };
 
 pub const package_data = struct {
