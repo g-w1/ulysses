@@ -25,7 +25,6 @@ pub fn main() !void {
         zgt.Label(.{ .text = "Ulysses" }),
         zgt.Row(.{}, .{
             zgt.Label(.{ .text = "Command To Run" }),
-            // TODO cache this
             zgt.TextField(.{ .text = command }).setName("command"),
         }),
         zgt.Row(.{}, .{
@@ -61,7 +60,9 @@ fn runcmd(b: *zgt.Button_Impl) !void {
     if (pid > 0) {
         std.os.exit(0);
     }
-    _ = std.os.linux.syscall0(.setsid);
+    // TODO other os??
+    if (comptime @import("builtin").os.tag == .linux)
+        _ = std.os.linux.syscall0(.setsid);
     std.log.info("running the command: `{s}`", .{command_with_sleep});
     std.process.execve(gpa, argv, null) catch std.os.exit(1);
 }
